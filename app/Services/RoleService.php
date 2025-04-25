@@ -2,7 +2,8 @@
 
 namespace App\Services;
 
-use Spatie\Permission\Contracts\Permission;
+use App\Models\User;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleService
@@ -15,7 +16,7 @@ class RoleService
     public function assignRoleToUser($userId, $roleNames)
     {
         $user = User::findOrFail($userId);
-        $user->assignRole($roleNames);
+        $user->syncRoles(is_array($roleNames) ? $roleNames : [$roleNames]);
         return $user;
     }
 
