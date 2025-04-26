@@ -46,6 +46,12 @@ class RoleController extends Controller
         return $this->successResponse($user, 'Role assigned to user successfully');
     }
 
+    public function indexPermissions()
+    {
+        $permissions = Permission::all();
+        return $this->successResponse($permissions);
+    }
+
     public function createPermission(StorePermissionRequest $request)
     {
         $permission = $this->roleService->createPermission($request->validated());

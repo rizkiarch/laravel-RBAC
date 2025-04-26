@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\User\UserController;
@@ -12,6 +13,7 @@ Route::prefix('auth')->group(function () {
     Route::middleware('auth:api')->post('logout', [AuthController::class, 'logout']);
 });
 
+route::get('/articles/not-auth', [ArticleController::class, 'index'])->name('getArticles');
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('articles', \App\Http\Controllers\Article\ArticleController::class)->middleware('permission:manage-articles');
 
@@ -19,6 +21,7 @@ Route::middleware('auth:api')->group(function () {
         Route::get('/', [RoleController::class, 'index']);
         Route::post('/', [RoleController::class, 'createRole']);
         Route::post('/assign/{userId}', [RoleController::class, 'assignRole']);
+        Route::get('/permissions', [RoleController::class, 'indexPermissions']);
         Route::post('/permissions', [RoleController::class, 'createPermission']);
         Route::post('/permissions/assign/{roleName}', [RoleController::class, 'assignPermissionToRole']);
     });

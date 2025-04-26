@@ -4,23 +4,42 @@ namespace App\Services;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthService
 {
     public function register(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        try {
+            \DB::beginTransaction();
 
-        $token = JWTAuth::fromUser($user);
-        return [
-            'user' => $user,
-            'token' => $token,
-        ];
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+
+            if (isset($data['role'])) {
+                $role = Role::findByName($data['role'], 'api');
+                $user->assignRole($role);
+            } else {
+                $defaultRole = Role::findByName('user', 'api');
+                $user->assignRole($defaultRole);
+            }
+
+            $token = JWTAuth::fromUser($user);
+
+            \DB::commit();
+
+            return [
+                'user' => $user,
+                'token' => $token,
+            ];
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            return response()->json(['error' => 'Registration failed. Please try again.'], 500);
+        }
     }
 
     public function login(array $data)
