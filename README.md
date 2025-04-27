@@ -1,21 +1,6 @@
-# 🚀 Laravel API Backend RBAC
+# 🚀 Laravel API Backend
 
 Ini adalah backend API menggunakan **Laravel**, database **MySQL**, menggunakan **JWT Authentication**, dan sudah tersedia **seeder** untuk akun Superadmin, Admin, dan User.
-
-## 📮 API Testing dengan Postman
-
-Kamu bisa coba-coba API yang sudah dibuat dengan **Postman**.
-
-Sudah disediakan **Postman Collection** siap pakai:
-
-👉 [Klik di sini untuk buka Collection di Postman]([https://app.postman.com/workspace/My-Workspace~362dfd31-0a3f-4065-8907-d0328037c488/collection/19083551-de52498a-08d0-4ee3-b1e4-e9e682dcef5a?action=share&creator=19083551](https://www.postman.com/docking-module-geologist-14760347/workspace/public-workspace/collection/19083551-de52498a-08d0-4ee3-b1e4-e9e682dcef5a?action=share&creator=19083551))
-
-**Isi collection:**
-- Endpoint Login
-- Register
-- CRUD Articles
-- User Management
-- Role & Permission Management (Spatie)
 
 ---
 
@@ -48,7 +33,7 @@ Kalau belum, bisa download dari [getcomposer.org](https://getcomposer.org/).
 
 ### 4. Copy File `.env`
 
-Buat file `.env` baru dari contoh `.env.example`.
+Buat file `.env` baru dari contoh `.env.example`:
 
 ```bash
 cp .env.example .env
@@ -77,7 +62,7 @@ php artisan key:generate
 
 ### 7. Jalankan Migrasi Database
 
-Ini untuk membuat semua tabel yang dibutuhkan:
+Untuk membuat semua tabel yang dibutuhkan:
 
 ```bash
 php artisan migrate
@@ -133,57 +118,31 @@ Untuk menjalankan server Laravel:
 php artisan serve
 ```
 
-Nanti akan jalan di:
+Nanti server akan berjalan di:
 
 ```
 http://localhost:8000
 ```
 
-API endpoint kamu akan mulai dari `http://localhost:8000/api`.
+Semua API endpoint akan mulai dari: `http://localhost:8000/api`
 
 ---
 
 ## 📂 Struktur Penting
 
 - `app/Models/` → Model database
-- `app/Http/Controllers/` → Tempat Controller (mengatur logic API)
-- `routes/api.php` → Semua route API ditaruh di sini
+- `app/Http/Controllers/` → Controller (atur logika API)
+- `routes/api.php` → Semua route API didefinisikan di sini
 - `database/seeders/` → Tempat file seeder akun awal
 - `config/jwt.php` → Konfigurasi JWT
 
 ---
 
-## 💬 FAQ
+## 📬 Postman Collection
 
-**Q: Gagal konek database?**  
-A: Cek lagi file `.env` kamu, pastikan `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` benar.
+Untuk mencoba semua API yang tersedia, kamu bisa langsung import koleksi Postman berikut:
 
-**Q: Error "Could not find driver (MySQL)"?**  
-A: Pastikan ekstensi `pdo_mysql` sudah aktif di PHP.
+🔗 [**Klik di sini untuk buka Postman Collection**](https://www.postman.com/docking-module-geologist-14760347/workspace/public-workspace/collection/19083551-de52498a-08d0-4ee3-b1e4-e9e682dcef5a?action=share&creator=19083551)
 
-**Q: Login gagal, token tidak muncul?**  
-A: Pastikan kamu sudah `php artisan jwt:secret` dan pakai endpoint login yang benar (`/api/login`).
+> Klik tombol **"Fork"** atau **"Import"** ke Postman kamu.
 
----
-
-## ⚡ Tips Tambahan
-
-- Setiap kali ada perubahan pada file `.env`, **restart** server Laravel (`php artisan serve`) agar perubahan terbaca.
-- Kalau ada error permission, coba jalankan:
-
-```bash
-chmod -R 775 storage bootstrap/cache
-```
-
-- Untuk reset database, bisa pakai:
-
-```bash
-php artisan migrate:fresh --seed
-```
-(**hapus semua data dan buat ulang**)
-
----
-
-# 🎯 Selamat ngoding Laravel + JWT! 🚀
-
----
