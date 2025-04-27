@@ -2,6 +2,21 @@
 
 Ini adalah backend API menggunakan **Laravel**, database **MySQL**, menggunakan **JWT Authentication**, dan sudah tersedia **seeder** untuk akun Superadmin, Admin, dan User.
 
+## 📮 API Testing dengan Postman
+
+Kamu bisa coba-coba API yang sudah dibuat dengan **Postman**.
+
+Sudah disediakan **Postman Collection** siap pakai:
+
+👉 [Klik di sini untuk buka Collection di Postman](https://app.postman.com/workspace/My-Workspace~362dfd31-0a3f-4065-8907-d0328037c488/collection/19083551-de52498a-08d0-4ee3-b1e4-e9e682dcef5a?action=share&creator=19083551)
+
+**Isi collection:**
+- Endpoint Login
+- Register
+- CRUD Articles
+- User Management
+- Role & Permission Management (Spatie)
+
 ---
 
 ## 📦 Cara Install Project
