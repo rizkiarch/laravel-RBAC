@@ -8,7 +8,7 @@ Kamu bisa coba-coba API yang sudah dibuat dengan **Postman**.
 
 Sudah disediakan **Postman Collection** siap pakai:
 
-👉 [Klik di sini untuk buka Collection di Postman](https://app.postman.com/workspace/My-Workspace~362dfd31-0a3f-4065-8907-d0328037c488/collection/19083551-de52498a-08d0-4ee3-b1e4-e9e682dcef5a?action=share&creator=19083551)
+👉 [Klik di sini untuk buka Collection di Postman]([https://app.postman.com/workspace/My-Workspace~362dfd31-0a3f-4065-8907-d0328037c488/collection/19083551-de52498a-08d0-4ee3-b1e4-e9e682dcef5a?action=share&creator=19083551](https://www.postman.com/docking-module-geologist-14760347/workspace/public-workspace/collection/19083551-de52498a-08d0-4ee3-b1e4-e9e682dcef5a?action=share&creator=19083551))
 
 **Isi collection:**
 - Endpoint Login
