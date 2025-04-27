@@ -48,8 +48,12 @@ class AuthService
             return response()->json(['error' => 'Failed! Check Email or Password Again'], 401);
         }
 
+        $user = auth()->user();
+        $permissions = $user->getAllPermissions()->pluck('name');
+
         return [
-            'user' => auth()->user(),
+            'user' => $user,
+            'permissions' => $permissions,
             'token' => $token,
         ];
     }

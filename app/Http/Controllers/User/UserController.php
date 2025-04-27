@@ -65,4 +65,14 @@ class UserController extends Controller
             return $this->errorResponse($e->getMessage(), 400);
         }
     }
+
+    public function assignRole(AssignRoleRequest $request, $id)
+    {
+        try {
+            $user = $this->userService->assignRole($id, $request->validated()['role']);
+            return $this->successResponse($user, 'Role assigned successfully');
+        } catch (\Exception $e) {
+            return $this->errorResponse($e->getMessage(), 400);
+        }
+    }
 }

@@ -69,4 +69,12 @@ class UserService
         $user = User::findOrFail($id);
         $user->delete();
     }
+
+    public function assignRole($id, $roleName)
+    {
+        $user = User::findOrFail($id);
+        $role = Role::findByName($roleName, 'api');
+        $user->syncRoles([$role]);
+        return $user->load('roles');
+    }
 }

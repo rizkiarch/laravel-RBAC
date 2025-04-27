@@ -13,7 +13,7 @@ Route::prefix('auth')->group(function () {
     Route::middleware('auth:api')->post('logout', [AuthController::class, 'logout']);
 });
 
-route::get('/articles/not-auth', [ArticleController::class, 'index'])->name('getArticles');
+route::get('/articles/not-auth', [ArticleController::class, 'getArticleNotAuth'])->name('getArticles');
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('articles', \App\Http\Controllers\Article\ArticleController::class)->middleware('permission:manage-articles');
 
@@ -27,5 +27,8 @@ Route::middleware('auth:api')->group(function () {
     });
 
     Route::apiResource('users', UserController::class)
+        ->middleware('permission:manage-users');
+
+    Route::post('users/{id}/assign-role', [UserController::class, 'assignRole'])
         ->middleware('permission:manage-users');
 });

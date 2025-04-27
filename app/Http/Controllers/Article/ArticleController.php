@@ -25,6 +25,12 @@ class ArticleController extends Controller
         return $this->successResponse($articles);
     }
 
+    public function getArticleNotAuth()
+    {
+        $articles = $this->articleService->getArticlesNotAuth();
+        return $this->successResponse($articles);
+    }
+
     public function show($id)
     {
         $article = $this->articleService->getArticleById($id);
