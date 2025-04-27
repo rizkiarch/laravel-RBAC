@@ -25,7 +25,7 @@ class ArticleService
     public function getArticlesNotAuth()
     {
         $articles = [];
-        Article::chunk(10, function ($chunk) use (&$articles) {
+        Article::chunk(2, function ($chunk) use (&$articles) {
             foreach ($chunk as $article) {
                 $articles[] = $article;
             }
