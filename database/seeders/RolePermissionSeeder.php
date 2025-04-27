@@ -58,6 +58,8 @@ class RolePermissionSeeder extends Seeder
         $userRole->givePermissionTo([
             'manage-articles',
             'create-articles',
+            'edit-articles',
+            'delete-articles',
         ]);
     }
 }
