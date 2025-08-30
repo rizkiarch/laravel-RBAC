@@ -13,6 +13,10 @@ Route::prefix('auth')->group(function () {
     Route::middleware('auth:api')->post('logout', [AuthController::class, 'logout']);
 });
 
+Route::get('/test', function () {
+    return response()->json(['message' => 'API is working']);
+});
+
 route::get('/articles/not-auth', [ArticleController::class, 'getArticleNotAuth'])->name('getArticles');
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('articles', \App\Http\Controllers\Article\ArticleController::class)->middleware('permission:manage-articles');
