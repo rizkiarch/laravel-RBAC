@@ -17,6 +17,7 @@ class RoleService
     {
         $user = User::findOrFail($userId);
         $user->syncRoles(is_array($roleNames) ? $roleNames : [$roleNames]);
+
         return $user;
     }
 
@@ -29,6 +30,7 @@ class RoleService
     {
         $role = Role::findByName($roleNames);
         $role->givePermissionTo($permissionNames);
+
         return $role;
     }
 }

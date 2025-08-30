@@ -22,18 +22,21 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = $this->articleService->getAllArticles();
+
         return $this->successResponse($articles);
     }
 
     public function getArticleNotAuth()
     {
         $articles = $this->articleService->getArticlesNotAuth();
+
         return $this->successResponse($articles);
     }
 
     public function show($id)
     {
         $article = $this->articleService->getArticleById($id);
+
         return $this->successResponse($article);
     }
 
@@ -45,6 +48,7 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $article = $this->articleService->createArticle($request->validated());
+
         return $this->successResponse($article, 'Article created successfully', 201);
     }
 
@@ -56,12 +60,14 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, $id)
     {
         $article = $this->articleService->updateArticle($id, $request->validated());
+
         return $this->successResponse($article, 'Article updated successfully');
     }
 
     public function destroy($id)
     {
         $this->articleService->deleteArticle($id);
+
         return $this->successResponse(null, 'Article deleted successfully');
     }
 }

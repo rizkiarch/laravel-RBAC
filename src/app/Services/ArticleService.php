@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Article;
-use Illuminate\Support\Facades\Auth;
 
 class ArticleService
 {
@@ -37,6 +36,7 @@ class ArticleService
     public function getArticleById($id)
     {
         $article = Article::findOrFail($id);
+
         return $article;
     }
 
@@ -53,11 +53,12 @@ class ArticleService
     {
         $article = Article::findOrFail($id);
 
-        if ($article->user_id !== auth()->id() && !auth()->user()->hasRole('superadmin')) {
+        if ($article->user_id !== auth()->id() && ! auth()->user()->hasRole('superadmin')) {
             abort(403, 'Unauthorized action.');
         }
 
         $article->update($data);
+
         return $article;
     }
 
@@ -65,7 +66,7 @@ class ArticleService
     {
         $article = Article::findOrFail($id);
 
-        if ($article->user_id !== auth()->id() && !auth()->user()->hasRole('superadmin')) {
+        if ($article->user_id !== auth()->id() && ! auth()->user()->hasRole('superadmin')) {
             abort(403, 'Unauthorized action.');
         }
 

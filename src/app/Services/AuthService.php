@@ -38,13 +38,14 @@ class AuthService
             ];
         } catch (\Exception $e) {
             \DB::rollBack();
+
             return response()->json(['error' => 'Registration failed. Please try again.'], 500);
         }
     }
 
     public function login(array $data)
     {
-        if (!$token = JWTAuth::attempt($data)) {
+        if (! $token = JWTAuth::attempt($data)) {
             return response()->json(['error' => 'Failed! Check Email or Password Again'], 401);
         }
 
@@ -73,6 +74,7 @@ class AuthService
     public function logout()
     {
         JWTAuth::invalidate(JWTAuth::getToken());
+
         return response()->json(['message' => 'Successfully logged out']);
     }
 }

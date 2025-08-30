@@ -43,7 +43,7 @@ class UserService
             'email' => $data['email'] ?? $user->email,
         ];
 
-        if (isset($data['password']) && !empty($data['password'])) {
+        if (isset($data['password']) && ! empty($data['password'])) {
             $updateData['password'] = Hash::make($data['password']);
         }
 
@@ -75,6 +75,7 @@ class UserService
         $user = User::findOrFail($id);
         $role = Role::findByName($roleName, 'api');
         $user->syncRoles([$role]);
+
         return $user->load('roles');
     }
 }

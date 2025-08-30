@@ -23,6 +23,7 @@ class AuthController extends Controller
     {
         try {
             $result = $this->authService->register($request->validated());
+
             return $this->successResponse($result, 'User registered successfully');
         } catch (\Throwable $th) {
             return $this->errorResponse('Registration failed', 500, ['error' => $th->getMessage()]);
@@ -33,6 +34,7 @@ class AuthController extends Controller
     {
         try {
             $result = $this->authService->login($request->validated());
+
             return $this->successResponse($result, 'User logged in successfully');
         } catch (\Throwable $th) {
             return $this->errorResponse('Login failed', 401, ['error' => $th->getMessage()]);
@@ -43,6 +45,7 @@ class AuthController extends Controller
     {
         try {
             $result = $this->authService->refresh();
+
             return $this->successResponse($result, 'Token refreshed successfully');
         } catch (\Throwable $th) {
             return $this->errorResponse('Token refresh failed', 500, ['error' => $th->getMessage()]);
@@ -53,6 +56,7 @@ class AuthController extends Controller
     {
         try {
             $result = $this->authService->me();
+
             return $this->successResponse($result, 'User data retrieved successfully');
         } catch (\Throwable $th) {
             return $this->errorResponse('Failed to retrieve user data', 500, ['error' => $th->getMessage()]);
@@ -63,6 +67,7 @@ class AuthController extends Controller
     {
         try {
             $result = $this->authService->logout();
+
             return $this->successResponse($result, 'User logged out successfully');
         } catch (\Throwable $th) {
             return $this->errorResponse('Logout failed', 500, ['error' => $th->getMessage()]);
