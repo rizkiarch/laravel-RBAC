@@ -26,17 +26,21 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
 
       - name: Install Dependencies
+        working-directory: ./src
         run: |
           composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
           npm install
 
       - name: Run Pint
+        working-directory: ./src
         run: vendor/bin/pint --test
 
       - name: Format Frontend
+        working-directory: ./src
         run: npm run format
 
       - name: Lint Frontend
+        working-directory: ./src
         run: npm run lint
 
       # Uncomment the following lines if you want auto-commit fixes

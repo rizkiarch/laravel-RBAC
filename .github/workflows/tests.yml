@@ -53,23 +53,30 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: 'src/package-lock.json'
 
       - name: Install Node Dependencies
+        working-directory: ./src
         run: npm ci
 
       - name: Build Assets
+        working-directory: ./src
         run: npm run build
 
       - name: Install Dependencies
+        working-directory: ./src
         run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Copy Environment File
+        working-directory: ./src
         run: cp .env.example .env
 
       - name: Generate Application Key
+        working-directory: ./src
         run: php artisan key:generate
 
       - name: Configure Environment
+        working-directory: ./src
         run: |
           echo "DB_CONNECTION=mysql" >> .env
           echo "DB_HOST=127.0.0.1" >> .env
@@ -82,13 +89,17 @@ jobs:
           echo "REDIS_PORT=6379" >> .env
 
       - name: Generate JWT Secret
+        working-directory: ./src
         run: php artisan jwt:secret
 
       - name: Run Migrations
+        working-directory: ./src
         run: php artisan migrate --force
 
       - name: Run Database Seeders
+        working-directory: ./src
         run: php artisan db:seed --force
 
       - name: Tests
+        working-directory: ./src
         run: php artisan test
