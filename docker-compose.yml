@@ -39,7 +39,7 @@ services:
         ports:
             - 3306:3306
         volumes:
-            - .docker/db/data:/var/lib/mysql
+            - mysql_data:/var/lib/mysql
             - .docker/logs:/var/log/mysql
             - .docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
             - .docker/db/sql:/docker-entrypoint-initdb.d
@@ -154,3 +154,7 @@ services:
 networks:
   appnet:
     driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local

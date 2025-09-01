@@ -10,8 +10,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # mix
 RUN apt-get update \
-  && apt-get install -y build-essential zlib1g-dev default-mysql-client curl gnupg procps vim git unzip libzip-dev libpq-dev \
-  && docker-php-ext-install zip pdo_mysql pdo_pgsql pgsql
+  && apt-get install -y build-essential zlib1g-dev default-mysql-client curl gnupg procps vim git unzip libzip-dev libpq-dev libxml2-dev \
+  && docker-php-ext-install zip pdo_mysql pdo_pgsql pgsql dom xml
 
 # intl
 RUN apt-get install -y libicu-dev \

@@ -51,7 +51,7 @@ class AuthService
 
         $user = auth()->user();
         $permissions = $user->getAllPermissions()->pluck('name');
-
+        dd($user);
         return [
             'user' => $user,
             'permissions' => $permissions,
