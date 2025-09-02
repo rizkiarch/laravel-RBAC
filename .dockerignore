@@ -1,0 +1,10 @@
+# Laravel cache files that should not be included in Docker build
+bootstrap/cache/packages.php*
+bootstrap/cache/services.php
+bootstrap/cache/config.php
+
+# Storage logs and cache
+storage/logs/*.log
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*

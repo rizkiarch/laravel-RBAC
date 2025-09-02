@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Article\ArticleController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Categories\CategoriesController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,7 @@ Route::middleware('auth:api')->group(function () {
         Route::post('/permissions', [RoleController::class, 'createPermission']);
         Route::post('/permissions/assign/{roleName}', [RoleController::class, 'assignPermissionToRole']);
     });
+    Route::apiResource('categories', CategoriesController::class)->middleware('permission:manage-categories');
 
     Route::apiResource('users', UserController::class)
         ->middleware('permission:manage-users');
